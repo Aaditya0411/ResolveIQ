@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
-    "build": "cd backend && npm install --include=dev && cd ../frontend && npm install --include=dev && npx vite build",
+    "build": "cd backend && npm install --include=dev && cd ../frontend && npm install --include=dev && node ./node_modules/vite/bin/vite.js build",
     "start": "npm start --prefix backend",
     "seed": "npm run seed --prefix backend",
     "test": "npm test --prefix backend"
