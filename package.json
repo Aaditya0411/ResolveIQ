@@ -1,0 +1,10 @@
+{
+  "name": "resolveiq",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "seed": "npm run seed --prefix backend",
+    "test": "npm test --prefix backend"
+  },
+  "devDependencies": { "concurrently": "^9.1.2" }
+}
