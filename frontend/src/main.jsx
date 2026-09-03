@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-const API = 'http://localhost:4000/api';
+const API = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:4000/api' : '/api');
 const labels = { TICKET: 'INBOX', CLASSIFIER: 'CLASSIFIER', TOOLS: 'TOOLS / APIs', EVIDENCE: 'EVIDENCE', ORCHESTRATOR: 'ORCHESTRATOR', RAG: 'POLICY RAG', SAFETY_GATE: 'SAFETY GATE', RESOLUTION: 'RESOLUTION' };
 function App() {
   const [data, setData] = useState({ tickets: [], runs: [], escalations: [], audit: [], metrics: {} });

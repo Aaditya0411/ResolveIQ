@@ -1,8 +1,13 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { db, resetSeed, createTicket, createPolicy, initMongo } from './store.js';
 import { resolveTicket, approveEscalation, rejectEscalation, investigateEscalation } from './agents/orchestrator.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cors());
@@ -104,6 +109,16 @@ app.post('/api/policies', (req, res) => {
   if (!name || !text) return res.status(400).json({ error: 'Name and text are required' });
   const policy = createPolicy({ name, section, text, tags, risk });
   res.status(201).json(policy);
+});
+
+// Serve static frontend in production
+const distPath = path.join(__dirname, '../../frontend/dist');
+app.use(express.static(distPath));
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api')) return next();
+  res.sendFile(path.join(distPath, 'index.html'), (err) => {
+    if (err) next();
+  });
 });
 
 app.use((err, _, res, __) => res.status(400).json({ error: err.message }));
