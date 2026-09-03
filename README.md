@@ -2,6 +2,8 @@
 
 **Autonomous where it's safe. Human where it matters.**
 
+🌐 **Live Demo Application**: [https://resolveiq-nrt3.onrender.com/](https://resolveiq-nrt3.onrender.com/)
+
 ResolveIQ is an AI-powered support operations console designed for complex e-commerce cases that require cross-system investigation across orders, shipping, inventory, policy KB, and warehouse systems. Actions are strictly gated by deterministic evidence verification and policy rules.
 
 ---
@@ -24,6 +26,7 @@ React Dashboard → Express API → Classifier Agent → Adaptive Orchestrator �
 
 ### API Endpoints
 
+- **Live Service URL**: `https://resolveiq-nrt3.onrender.com`
 - **Health Check**: `GET /api/health`
 - **Dashboard Data**: `GET /api/dashboard` (returns active tickets, runs, escalations, audit logs, policies, and metrics)
 - **Tickets**: 
